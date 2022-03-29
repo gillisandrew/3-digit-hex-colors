@@ -24,7 +24,8 @@ const Home: NextPage = () => {
                     key={color}
                     onClick={() => copy(color)}
                     className={styles.tile}
-                    style={{backgroundColor: color}}
+                    style={{backgroundColor: color, outlineColor: color}}
+                    title={color}
                   >
                     <span
                       style={{ color: "#FFF", textShadow: "1px 1px 0 #000" }}

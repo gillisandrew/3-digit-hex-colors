@@ -31,6 +31,7 @@
   grid-template-rows: repeat(256, 5em);
   grid-gap: 0;
   gap: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .tile {
@@ -38,7 +39,21 @@
   align-items: center;
   justify-content: center;
   border: none;
+  overflow: hidden;
 }
+.tile > span {
+  opacity: 0;
+}
+
+.tile:hover, .tile:focus {
+  outline: solid 0.75em rgba(0,0,0,0);
+  z-index: 1;
+}
+
+.tile:hover > span, .tile:focus > span {
+  opacity: 1;
+}
+
 
 @media only screen and (max-width: 1024px) {
   .container {
