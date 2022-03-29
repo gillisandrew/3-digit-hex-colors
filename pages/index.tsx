@@ -22,14 +22,15 @@ const Home: NextPage = () => {
                 return (
                   <button
                     key={color}
-                    onClick={() => copy(color)}
+                    onClick={(e) => {
+                      copy(color)
+                      e.currentTarget.blur()
+                    }}
                     className={styles.tile}
-                    style={{backgroundColor: color, outlineColor: color}}
+                    style={{color}}
                     title={color}
                   >
-                    <span
-                      style={{ color: "#FFF", textShadow: "1px 1px 0 #000" }}
-                    >
+                    <span>
                       {color}
                     </span>
                   </button>

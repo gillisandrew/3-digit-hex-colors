@@ -40,14 +40,19 @@
   justify-content: center;
   border: none;
   overflow: hidden;
+  background-color: currentColor;
 }
 .tile > span {
   opacity: 0;
+  color: #FFF;
+  text-shadow: 1px 1px 0 #000;
 }
 
 .tile:hover, .tile:focus {
-  outline: solid 0.75em rgba(0,0,0,0);
+  border-radius: 3px;
   z-index: 1;
+  margin: -1em;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 }
 
 .tile:hover > span, .tile:focus > span {
