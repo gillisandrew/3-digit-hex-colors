@@ -5,9 +5,20 @@ import useCopyToClipboard from "../hooks/useCopyToClipboard";
 import styles from "../styles/Home.module.css";
 
 const hex = "0123456789ABCDEF".split("");
+const mapRotationToPermutation = (r: number, i: string, j: string, k: string) =>{
+  switch(r) {
+    case 0: return `#${i}${j}${k}`
+    case 1: return `#${i}${k}${j}`
+    case 2: return `#${j}${i}${k}`
+    case 3: return `#${j}${k}${i}`
+    case 4: return `#${k}${j}${i}`
+    case 5: return `#${k}${i}${j}`
+  }
+}
 const Home: NextPage = () => {
   const [rotation, setRotation] = useState(0)
   const [_value, copy] = useCopyToClipboard();
+
   const copyHandler: MouseEventHandler<HTMLButtonElement>  = (e) => {
     copy(e.currentTarget.title)
     e.currentTarget.blur()
@@ -29,6 +40,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>3-Digit Hex Colors</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>3-Digit Hex Colors</h1>
@@ -38,17 +50,7 @@ const Home: NextPage = () => {
           {hex.map((i) =>
             hex.map((j) =>
               hex.map((k) => {
-                const color = ((r) =>{
-                  switch(r) {
-                    case 0: return `#${i}${j}${k}`
-                    case 1: return `#${i}${k}${j}`
-                    case 2: return `#${j}${i}${k}`
-                    case 3: return `#${j}${k}${i}`
-                    case 4: return `#${k}${j}${i}`
-                    case 5: return `#${k}${i}${j}`
-                  }
-                })(rotation);
-
+                const color = mapRotationToPermutation(rotation,i,j,k);
                 return (
                   <button
                     key={i+j+k}
