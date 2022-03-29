@@ -61,6 +61,9 @@
   color: #FFF;
   text-shadow: 0px 1px 0 rgba(0,0,0,0.9);
   font-weight: bold;
+  margin: 0;
+  padding: 0;
+  outline: none;
 }
 .tile:nth-child(1) {
   border-top-left-radius: 0.5rem;
