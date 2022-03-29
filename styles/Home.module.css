@@ -24,43 +24,70 @@
   font-size: 1.5rem;
 }
 .tiles {
-  border-radius: 0.5em;
-  overflow: hidden;
+  border-radius: 0.5rem;
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: repeat(256, 5em);
   grid-gap: 0;
   gap: 0;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
-
 .tile {
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  overflow: hidden;
-  background-color: currentColor;
-}
-.tile > span {
-  opacity: 0;
   color: #FFF;
-  text-shadow: 1px 1px 0 #000;
+  text-shadow: 0px 1px 0 rgba(0,0,0,0.9);
+  font-weight: bold;
+}
+.tile:nth-child(1) {
+  border-top-left-radius: 0.5rem;
+}
+.tile:nth-last-child(1) {
+  border-bottom-right-radius: 0.5rem;
+}
+
+.tile:after {
+  content: attr(title);
+  display: inline;
+  opacity: 0;
 }
 
 .tile:hover, .tile:focus {
-  border-radius: 3px;
+  border-radius: 0.5rem !important;
   z-index: 1;
   margin: -1em;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+.tile:hover:after, .tile:focus:after {
+  opacity: 1;
+}
+.tile:nth-child(16) {
+  border-top-right-radius: 0.5rem;
 }
 
-.tile:hover > span, .tile:focus > span {
-  opacity: 1;
+.tile:nth-last-child(16) {
+  border-bottom-left-radius: 0.5rem;
 }
 
 
 @media only screen and (max-width: 1024px) {
+  .tile:nth-child(16) {
+    border-top-right-radius: 0;
+  }
+  
+  .tile:nth-last-child(16) {
+    border-bottom-left-radius: 0;
+  }
+
+  .tile:nth-child(8) {
+    border-top-right-radius: 0.5rem;
+  }
+
+  .tile:nth-last-child(8) {
+    border-bottom-left-radius: 0.5rem;
+  }
   .container {
     padding: 0 1rem;
   }
@@ -71,6 +98,20 @@
 }
 
 @media only screen and (max-width: 456px) {
+  .tile:nth-child(8) {
+    border-top-right-radius: 0;
+  }
+
+  .tile:nth-last-child(8) {
+    border-bottom-left-radius: 0;
+  }
+  .tile:nth-child(4) {
+    border-top-right-radius: 0.5rem;
+  }
+
+  .tile:nth-last-child(4) {
+    border-bottom-left-radius: 0.5rem;
+  }
   .container {
     padding: 0 1rem;
   }

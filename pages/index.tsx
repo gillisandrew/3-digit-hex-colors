@@ -1,11 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { MouseEventHandler } from "react";
 import useCopyToClipboard from "../hooks/useCopyToClipboard";
 import styles from "../styles/Home.module.css";
 
 const hex = "0123456789ABCDEF".split("");
 const Home: NextPage = () => {
   const [_value, copy] = useCopyToClipboard();
+  const clickHandler: MouseEventHandler<HTMLButtonElement>  = (e) => {
+    copy(e.currentTarget.title)
+    e.currentTarget.blur()
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -18,22 +23,15 @@ const Home: NextPage = () => {
           {hex.map((i) =>
             hex.map((j) =>
               hex.map((k) => {
-                const color = "#" + i + j + k;
+                const color = `#${i}${j}${k}`;
                 return (
                   <button
                     key={color}
-                    onClick={(e) => {
-                      copy(color)
-                      e.currentTarget.blur()
-                    }}
+                    onClick={clickHandler}
                     className={styles.tile}
-                    style={{color}}
+                    style={{background: color}}
                     title={color}
-                  >
-                    <span>
-                      {color}
-                    </span>
-                  </button>
+                  />
                 );
               })
             )
