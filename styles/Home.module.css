@@ -1,6 +1,18 @@
 .container {
   padding: 0 2rem;
 }
+.container:before {
+  content: '#';
+  font-size: 60rem;
+  top: -30rem;
+  left: -8rem;
+  font-weight: bold;
+  display: block;
+  position: absolute;
+  color: #dedede;
+  text-shadow:;
+  z-index: -1;
+}
 
 .main {
   min-height: 100vh;
@@ -14,18 +26,7 @@
   color: #222;
 }
 
-.container:before {
-  content: '#';
-  font-size: 60rem;
-  top: -30rem;
-  left: -8rem;
-  font-weight: bold;
-  display: block;
-  position: absolute;
-  color: #dedede;
-  text-shadow:;
-  z-index: -1;
-}
+
 
 .title,
 .description,
@@ -118,6 +119,7 @@
 }
 
 @media only screen and (max-width: 456px) {
+
   .tile:nth-child(8) {
     border-top-right-radius: 0;
   }
@@ -134,6 +136,12 @@
   }
   .container {
     padding: 0 1rem;
+  }
+  .container:before {
+    content: '#';
+    font-size: 40rem;
+    top: -20rem;
+    left: -6rem;
   }
   .tiles {
     grid-template-columns: repeat(4, 1fr);
